@@ -1,0 +1,26 @@
+import ChatroomModel from "../models/chatroomModel.js";
+
+export const createChatroom = async (req, res) => {
+  const { chatroomName: name } = req.body;
+  try {
+    const allChatrooms = await ChatroomModel.find();
+    if (allChatrooms.length > 9) return;
+
+    const newChatroom = await ChatroomModel.create({ name, messages: [] });
+
+    newChatroom.save();
+    res.status(200).json("Chatroom created");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getChatrooms = async (req, res) => {
+  try {
+    const allChatrooms = await ChatroomModel.find();
+
+    res.json(allChatrooms);
+  } catch (err) {
+    console.log(err);
+  }
+};

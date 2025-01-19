@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", serif;
+}
+body {
+  background-color: #e2e2e2;
+}
+
+.homepage h1,
+.homepage h2 {
+  text-align: center;
+}
+
+.homepage ul,
+.homepage a {
+  text-align: center;
+  text-decoration: none;
+  list-style: none;
+  color: black;
+}
+
+.homepage li {
+  font-size: 2rem;
+  margin-top: 0.3rem;
+}
+
+.homepage a:hover {
+  color: rgb(26, 26, 148);
+}
+
+.chatbox {
+  padding: 1vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.chatbox h2 {
+  text-align: center;
+  font-size: xx-large;
+}
+.chatbox input,
+.chatbox button {
+  height: 2rem;
+  border-radius: 10px;
+  font-size: large;
+}
+.chatbox input {
+  width: 96%;
+  padding-left: 10px;
+  border: 0.2rem solid rgb(80, 80, 80);
+  background-color: #e2e2e2;
+  transition: 0.5s;
+}
+.chatbox input:focus {
+  outline: none;
+  border: 0.2rem solid rgb(48, 47, 47);
+  background-color: #f3f3f3;
+  transition: 0.5s;
+}
+.chatbox button {
+  width: 4%;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-size: 1.5rem;
+  transition: 0.1s;
+}
+.chatbox button:hover {
+  color: rgb(83, 81, 81);
+  transition: 0.1s;
+}
+
+.chatbox li {
+  list-style: none;
+  margin: 12px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+.chatbox div {
+  flex-grow: 1;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 50px;
+  z-index: 1000;
+  font-size: 2rem;
+}
+
+.modal form {
+  display: flex;
+}
+
+.modal input {
+  width: 100%;
+  height: 2rem;
+}
+
+.modal button {
+  width: 20%;
+  background-color: transparent;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  .modal {
+    font-size: 1rem;
+    padding: 10px;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+}
