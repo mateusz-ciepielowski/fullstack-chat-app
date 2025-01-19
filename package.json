@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "server": "node backend/server.js",
+    "start": "node backend/server.js",
     "build": "npm install && cd frontend && npm install && npm run build"
   },
   "type": "module",
