@@ -31,7 +31,9 @@ export default function Chat() {
 
   useEffect(() => {
     // Connecting to socket.io server
-    const socket = io(import.meta.env.VITE_BASE_URL);
+    const socket = io(
+      import.meta.env.MODE === "development" ? "http://localhost:8000/" : "/"
+    );
     socket.connect();
 
     socket.on("newMessage", (newMessage) => {

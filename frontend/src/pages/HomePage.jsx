@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function HomePage() {
-  const API_URL = import.meta.env.VITE_API_URL;
-  console.log(API_URL);
   const [allChatrooms, setAllChatrooms] = useState([]);
   useEffect(() => {
     const getAllChatrooms = async () => {
