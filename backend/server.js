@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(
   cors({
     credentials: true,
-    origin: process.env.ORIGIN_URL,
+    origin: "https://fullstack-nm-chat-app.onrender.com",
   })
 );
 
