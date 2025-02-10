@@ -121,6 +121,70 @@ body {
   z-index: 1000;
 }
 
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10rem;
+}
+
+.chatroom-list {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.chatroom-list button {
+  background-color: transparent;
+  border: black solid 2px;
+  border-radius: 8px;
+  font-size: 1rem;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.chatroom-list button:hover {
+  color: white;
+  background-color: #ed145b;
+  border-color: white;
+  transition: 0.2s;
+}
+
+.chatroom-list .btn-delete:hover {
+  background-color: #e91717;
+  border-color: #e91717;
+  color: white;
+  transition: 0.2s;
+}
+
+/* button {
+  min-width: 130px;
+  height: 40px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  background: #ed145b;
+}
+button:hover {
+  background-color: #ff6392;
+}
+button:active {
+  top: 2px;
+} */
+
 @media (max-width: 768px) {
   .modal {
     font-size: 1rem;

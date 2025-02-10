@@ -1,6 +1,11 @@
 import ChatroomModel from "../models/chatroomModel.js";
 
 export const createChatroom = async (req, res) => {
+  const { isAdmin } = req.user;
+  if (!isAdmin) {
+    res.status(401).json("Unauthorized!");
+    return;
+  }
   const { chatroomName: name } = req.body;
   try {
     const allChatrooms = await ChatroomModel.find();
@@ -22,5 +27,22 @@ export const getChatrooms = async (req, res) => {
     res.json(allChatrooms);
   } catch (err) {
     console.log(err);
+  }
+};
+
+export const deleteChatroom = async (req, res) => {
+  const { isAdmin } = req.user;
+  if (!isAdmin) {
+    res.status(401).json("Unauthorized!");
+    return;
+  }
+  try {
+    const { chatroom } = req.body;
+
+    await ChatroomModel.findOneAndDelete(chatroom);
+
+    res.status(200).json("Chatroom deleted!");
+  } catch (err) {
+    console.error(err);
   }
 };

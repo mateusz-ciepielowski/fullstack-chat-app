@@ -8,7 +8,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: [process.env.ORIGIN_URL],
+    origin: ["http://localhost:5173", "https://chat.nm.com.pl"], // możliwa zmiana
   },
   connectionStateRecovery: {
     maxDisconnectionDuration: 2 * 60 * 1000,

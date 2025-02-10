@@ -10,6 +10,7 @@ export default function tokenVerification(req, res, next) {
     req.user = isVerified;
   } else {
     res.status(401).json("Unauthorized");
+    return;
   }
   next();
 }

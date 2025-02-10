@@ -8,10 +8,12 @@ import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 import Modal from "./Modal";
 import UserContext from "../context/UserContext";
+import Spinner from "./Spinner";
 
 export default function Chat() {
   const { userId, setUserData } = useContext(UserContext);
   const lastMessageRef = useRef();
+  const [isLoading, setIsLoading] = useState(true);
 
   const { chatroom } = useParams();
   const [allMessages, setAllMessages] = useState([]);
@@ -19,9 +21,11 @@ export default function Chat() {
   useEffect(() => {
     const getMessages = async () => {
       try {
+        setIsLoading(true);
         const { data } = await axios.get(`/message/get/${chatroom}`);
 
         setAllMessages(data);
+        setIsLoading(false);
       } catch (err) {
         console.log(err);
       }
@@ -32,7 +36,7 @@ export default function Chat() {
   useEffect(() => {
     // Connecting to socket.io server
     const socket = io(
-      import.meta.env.MODE === "development" ? "http://localhost:8000/" : "/"
+      import.meta.env.MODE === "development" ? "http://localhost:8000" : "/"
     );
     socket.connect();
 
@@ -73,13 +77,17 @@ export default function Chat() {
       <div className="chatbox">
         <h2>Czat: {chatroom}</h2>
         <div>
-          <ul>
-            {allMessages.map((message) => (
-              <li key={message._id} ref={lastMessageRef}>
-                <b>{message.chatter.username}</b>: {message.message}
-              </li>
-            ))}
-          </ul>
+          {isLoading ? (
+            <Spinner />
+          ) : (
+            <ul>
+              {allMessages.map((message) => (
+                <li key={message._id} ref={lastMessageRef}>
+                  <b>{message.chatter.username}</b>: {message.message}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
         <form className="form-input" onSubmit={handleSendMessage}>
           <input

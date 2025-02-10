@@ -5,11 +5,15 @@ import MessageModel from "../models/messageModel.js";
 export const sendMessage = async (req, res) => {
   try {
     const { userId } = req.user;
+
+    const isAdmin = req.user?.isAdmin;
+
     const { message, chatroom } = req.body;
 
     const { _id: chatroomId } = await ChatroomModel.findOne({ name: chatroom });
 
     const newMessage = await MessageModel.create({
+      isAdmin: isAdmin,
       chatter: userId,
       message,
       chatroom: chatroomId,

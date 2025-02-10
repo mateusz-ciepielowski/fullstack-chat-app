@@ -7,6 +7,7 @@ axios.defaults.withCredentials = true;
 const UserContext = createContext({
   userId: "",
   username: "",
+  isAdmin: false,
   setUserData: () => {},
 });
 
@@ -23,6 +24,7 @@ export function UserContextProvider({ children }) {
   const userContext = {
     userId: userData.userId,
     username: userData.username,
+    isAdmin: userData.isAdmin,
     setUserData,
   };
 

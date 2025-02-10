@@ -21,17 +21,26 @@ export default function AdminPage() {
     }, 100);
   }
 
+  async function handleLogout() {
+    await axios.post("/admin/logout");
+    navigate("/");
+    navigate(0);
+  }
+
   return (
     <>
       <h2>Stwórz pokój</h2>
-      <form onSubmit={handleCreateChatroom}>
-        <input
-          value={chatroomName}
-          onChange={(e) => setChatroomName(e.target.value)}
-          required
-        />
-        <button type="submit">Stwórz</button>
-      </form>
+      <div>
+        <form onSubmit={handleCreateChatroom}>
+          <input
+            value={chatroomName}
+            onChange={(e) => setChatroomName(e.target.value)}
+            required
+          />
+          <button type="submit">Stwórz</button>
+        </form>
+        <button onClick={handleLogout}>Wyloguj się</button>
+      </div>
     </>
   );
 }

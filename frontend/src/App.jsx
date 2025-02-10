@@ -5,6 +5,7 @@ import AdminPage from "./pages/AdminPage";
 import ChatroomPage from "./pages/ChatroomPage";
 import chatroomLoader from "./util/chatroomLoader";
 import ErrorPage from "./pages/ErrorPage";
+import LoginPage from "./pages/LoginPage";
 
 const router = createBrowserRouter([
   {
@@ -16,8 +17,21 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
+        path: "login",
+        element: <LoginPage />,
+      },
+      {
         path: "admin",
-        element: <AdminPage />,
+        children: [
+          {
+            index: true,
+            element: <AdminPage />,
+          },
+          {
+            path: "register",
+            element: <LoginPage />,
+          },
+        ],
       },
       {
         path: ":chatroom",
