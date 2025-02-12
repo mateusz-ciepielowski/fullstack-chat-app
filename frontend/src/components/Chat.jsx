@@ -6,7 +6,7 @@ import { io } from "socket.io-client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
-import Modal from "./Modal";
+import RegisterModal from "./RegisterModal.jsx";
 import UserContext from "../context/UserContext";
 import Spinner from "./Spinner";
 
@@ -73,7 +73,7 @@ export default function Chat() {
 
   return (
     <>
-      {!userId && <Modal chatroom={chatroom} />}
+      {!userId && <RegisterModal chatroom={chatroom} />}
       <div className="chatbox">
         <h2>Czat: {chatroom}</h2>
         <div>

@@ -4,7 +4,7 @@ import { createPortal } from "react-dom";
 
 import ModalContext from "../context/ModalContext";
 
-export default function Modal({ chatroom }) {
+export default function RegisterModal({ chatroom }) {
   const { isClosed, setIsClosed } = useContext(ModalContext);
 
   const [username, setUsername] = useState("");

@@ -6,11 +6,16 @@ import UserContext from "../context/UserContext";
 import Spinner from "../components/Spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil, faTrash, faUser } from "@fortawesome/free-solid-svg-icons";
+import ModalContext from "../context/ModalContext";
+import EditModal from "../components/EditModal";
+import AttendanceModal from "../components/AttendanceModal";
 
 export default function HomePage() {
   const { isAdmin } = useContext(UserContext);
+  const modalCtx = useContext(ModalContext);
   const [allChatrooms, setAllChatrooms] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [chosenChatroom, setChosenChatroom] = useState(null);
 
   useEffect(() => {
     const getAllChatrooms = async () => {
@@ -49,7 +54,6 @@ export default function HomePage() {
         )}
       </div>
       <h2>Lista wszystkich czatów:</h2>
-
       {isLoading ? (
         <Spinner />
       ) : (
@@ -60,10 +64,20 @@ export default function HomePage() {
                 <Link to={`/${chatroom.name}`}>{chatroom.name}</Link>
                 {isAdmin && (
                   <>
-                    <button onClick={() => {}}>
+                    <button
+                      onClick={() => {
+                        setChosenChatroom(chatroom);
+                        modalCtx.setIsAttendanceClosed((prev) => !prev);
+                      }}
+                    >
                       <FontAwesomeIcon icon={faUser} />
                     </button>
-                    <button onClick={() => {}}>
+                    <button
+                      onClick={() => {
+                        setChosenChatroom(chatroom);
+                        modalCtx.setIsEditing((prev) => !prev);
+                      }}
+                    >
                       <FontAwesomeIcon icon={faPencil} />
                     </button>
                     <button
@@ -78,6 +92,10 @@ export default function HomePage() {
             </li>
           ))}
         </ul>
+      )}
+      {modalCtx.isEditing && <EditModal chatroom={chosenChatroom} />}
+      {modalCtx.isAttendanceClosed && (
+        <AttendanceModal chatroom={chosenChatroom} />
       )}
     </div>
   );

@@ -6,6 +6,7 @@ import ChatroomPage from "./pages/ChatroomPage";
 import chatroomLoader from "./util/chatroomLoader";
 import ErrorPage from "./pages/ErrorPage";
 import LoginPage from "./pages/LoginPage";
+import adminLoader from "./util/adminLoader";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
             element: <LoginPage />,
           },
         ],
+        loader: adminLoader,
       },
       {
         path: ":chatroom",
