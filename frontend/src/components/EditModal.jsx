@@ -23,8 +23,11 @@ export default function EditModal({ chatroom }) {
   return createPortal(
     <>
       <div className="modal-overlay"></div>
-      <div className="modal">
-        <p>Wprowadź nową nazwę:</p>
+      <div className="modal modal-editing">
+        <div className="modal-header">
+          <p>Wprowadź nową nazwę:</p>
+          <button onClick={() => setIsEditing(false)}>X</button>
+        </div>
         <form onSubmit={handleEditName}>
           <input
             onChange={(ev) => setNewName(ev.target.value)}

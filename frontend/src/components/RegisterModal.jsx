@@ -11,6 +11,13 @@ export default function RegisterModal({ chatroom }) {
 
   function handleRegister(e) {
     e.preventDefault();
+
+    if (username.length < 4 || username.length > 32) {
+      alert(
+        "W nazwie muszą być co najmniej 4 litery, a maksymalnie mogą być 32!"
+      );
+      return;
+    }
     axios.post(
       "/register",
       {
