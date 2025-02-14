@@ -31,26 +31,28 @@ export default function LoginPage() {
 
   return (
     <section>
-      <h1>Login Page</h1>
-      <input
-        type="text"
-        name="login"
-        id="login"
-        onChange={(e) => setLogin(e.target.value)}
-        value={login}
-        placeholder="Nazwa użytkownika"
-        onKeyDown={handleKeyPress}
-      />
-      <input
-        type="password"
-        name="password"
-        id="password"
-        onChange={(e) => setPassword(e.target.value)}
-        value={password}
-        placeholder="Hasło"
-        onKeyDown={handleKeyPress}
-      />
-      <button onClick={handleLogin}>Zaloguj się</button>
+      <div className="login-page">
+        <h1>Login Page</h1>
+        <input
+          type="text"
+          name="login"
+          id="login"
+          onChange={(e) => setLogin(e.target.value)}
+          value={login}
+          placeholder="Nazwa użytkownika"
+          onKeyDown={handleKeyPress}
+        />
+        <input
+          type="password"
+          name="password"
+          id="password"
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+          placeholder="Hasło"
+          onKeyDown={handleKeyPress}
+        />
+        <button onClick={handleLogin}>Zaloguj się</button>
+      </div>
     </section>
   );
 }

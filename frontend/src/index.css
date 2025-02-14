@@ -32,6 +32,55 @@ body {
   color: rgb(26, 26, 148);
 }
 
+.admin-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 100px;
+}
+
+.create-admin form,
+.create-chatroom form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.create-admin form button,
+.create-chatroom form button {
+  max-width: 100px;
+  align-self: center;
+}
+
+.create-admin form input,
+.create-chatroom form input,
+.login-page input {
+  border-radius: 4px;
+  height: 30px;
+  padding: 2px;
+  font-size: larger;
+}
+
+section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  max-width: 300px;
+  margin: 10px 0 0 10px;
+}
+
 .chatbox {
   padding: 1vh;
   display: flex;
@@ -81,6 +130,13 @@ body {
   list-style: none;
   margin: 12px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.chatbox li button {
+  font-size: 12px;
+  align-self: flex-start;
 }
 .chatbox div {
   flex-grow: 1;
@@ -235,5 +291,8 @@ table {
     font-size: 1rem;
     padding: 10px;
     transform: translate(-50%, -50%) scale(1.5);
+  }
+  .logo {
+    max-width: 150px;
   }
 }

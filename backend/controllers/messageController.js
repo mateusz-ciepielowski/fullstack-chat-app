@@ -41,3 +41,22 @@ export const getMessages = async (req, res) => {
     console.log(err);
   }
 };
+
+export const deleteMessage = async (req, res) => {
+  const { isAdmin } = req.user;
+  if (!isAdmin) {
+    res.status(401).json("Unauthorized!");
+    return;
+  }
+  try {
+    const { id } = req.params;
+
+    const deletedMessage = await MessageModel.findOneAndDelete({ _id: id });
+
+    io.emit("deleteMessage", deletedMessage);
+
+    res.status(200).json("Message deleted!");
+  } catch (error) {
+    console.error(error);
+  }
+};

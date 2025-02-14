@@ -11,7 +11,7 @@ import UserContext from "../context/UserContext";
 import Spinner from "./Spinner";
 
 export default function Chat() {
-  const { userId, setUserData } = useContext(UserContext);
+  const { isAdmin, userId, setUserData } = useContext(UserContext);
   const lastMessageRef = useRef();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -43,6 +43,12 @@ export default function Chat() {
     socket.on("newMessage", (newMessage) => {
       setAllMessages((prev) => [...prev, newMessage]);
     });
+
+    socket.on("deleteMessage", (deletedMessage) => {
+      setAllMessages((prev) => {
+        return prev.filter((message) => message._id !== deletedMessage._id);
+      });
+    });
     return () => {
       socket?.disconnect();
     };
@@ -71,6 +77,14 @@ export default function Chat() {
     }
   }
 
+  async function handleDeleteMessage(id) {
+    try {
+      axios.delete(`/message/delete/${id}`);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   return (
     <>
       {!userId && <RegisterModal chatroom={chatroom} />}
@@ -83,7 +97,14 @@ export default function Chat() {
             <ul>
               {allMessages.map((message) => (
                 <li key={message._id} ref={lastMessageRef}>
-                  <b>{message.chatter.username}</b>: {message.message}
+                  <div>
+                    <b>{message.chatter.username}</b>: {message.message}
+                  </div>
+                  {isAdmin && (
+                    <button onClick={() => handleDeleteMessage(message._id)}>
+                      X
+                    </button>
+                  )}
                 </li>
               ))}
             </ul>

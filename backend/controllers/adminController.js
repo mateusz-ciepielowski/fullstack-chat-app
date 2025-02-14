@@ -57,8 +57,11 @@ export const register = async (req, res) => {
 
   const { username, password } = req.body;
 
-  if (password.trim().length < 9) {
-    res.status(400).json({ message: "Your password is too short!" });
+  if (password.trim().length < 8) {
+    res.status(400).json({
+      message:
+        "Twoje hasło jest za krótkie! Musi się składać przynajmniej z 8 znaków!",
+    });
     return;
   }
   try {
@@ -71,6 +74,5 @@ export const register = async (req, res) => {
     res
       .status(400)
       .json({ message: "Something went wrong! Could not create an admin!" });
-    console.log(err);
   }
 };

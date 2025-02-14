@@ -10,6 +10,8 @@ import ModalContext from "../context/ModalContext";
 import EditModal from "../components/EditModal";
 import AttendanceModal from "../components/AttendanceModal";
 
+import logo from "../../public/nmlogo.png";
+
 export default function HomePage() {
   const { isAdmin } = useContext(UserContext);
   const modalCtx = useContext(ModalContext);
@@ -46,7 +48,7 @@ export default function HomePage() {
   return (
     <div className="homepage">
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <h1>NM Chat</h1>
+        <img src={logo} className="logo" />
         {!isAdmin ? (
           <Link to={"/login"}>Login</Link>
         ) : (
