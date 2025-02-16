@@ -12,9 +12,9 @@ export default function RegisterModal({ chatroom }) {
   function handleRegister(e) {
     e.preventDefault();
 
-    if (username.length < 4 || username.length > 32) {
+    if (username.length < 5 || username.length > 32) {
       alert(
-        "W nazwie muszą być co najmniej 4 litery, a maksymalnie mogą być 32!"
+        "W nazwie muszą być co najmniej 5 liter, a maksymalnie mogą być 32!"
       );
       return;
     }

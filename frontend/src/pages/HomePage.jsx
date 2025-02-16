@@ -10,7 +10,7 @@ import ModalContext from "../context/ModalContext";
 import EditModal from "../components/EditModal";
 import AttendanceModal from "../components/AttendanceModal";
 
-import logo from "../../public/nmlogo.png";
+import logo from "./nmlogo.png";
 
 export default function HomePage() {
   const { isAdmin } = useContext(UserContext);
