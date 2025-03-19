@@ -87,13 +87,16 @@ section {
   flex-direction: column;
   min-height: 100vh;
 }
+.chatbox form {
+  display: flex;
+}
 .chatbox h2 {
   text-align: center;
   font-size: xx-large;
 }
 .chatbox input,
 .chatbox button {
-  height: 2rem;
+  height: 3rem;
   border-radius: 10px;
   font-size: large;
 }
