@@ -60,3 +60,16 @@ export const deleteMessage = async (req, res) => {
     console.error(error);
   }
 };
+
+export const exportMessages = async (req, res) => {
+  try {
+    const { chatroom } = req.body;
+    const { _id: chatroomId } = await ChatroomModel.findOne({ name: chatroom });
+    const messages = await MessageModel.find({ chatroom: chatroomId }).populate(
+      "chatter"
+    );
+    res.status(200).json(messages);
+  } catch (err) {
+    console.log(err);
+  }
+};

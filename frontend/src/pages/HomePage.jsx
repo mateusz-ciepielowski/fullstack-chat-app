@@ -5,12 +5,18 @@ import { Link } from "react-router-dom";
 import UserContext from "../context/UserContext";
 import Spinner from "../components/Spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPencil, faTrash, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+  faComments,
+  faPencil,
+  faTrash,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import ModalContext from "../context/ModalContext";
 import EditModal from "../components/EditModal";
 import AttendanceModal from "../components/AttendanceModal";
 
 import logo from "./nmlogo.png";
+import exportMessages from "../util/exportMessages";
 
 export default function HomePage() {
   const { isAdmin } = useContext(UserContext);
@@ -73,6 +79,14 @@ export default function HomePage() {
                       }}
                     >
                       <FontAwesomeIcon icon={faUser} />
+                    </button>
+                    <button
+                      onClick={() => {
+                        setChosenChatroom(chatroom);
+                        exportMessages(chatroom.name);
+                      }}
+                    >
+                      <FontAwesomeIcon icon={faComments} />
                     </button>
                     <button
                       onClick={() => {
