@@ -65,6 +65,8 @@ export const register = async (req, res) => {
     return;
   }
   try {
+    const allAdmins = await AdminModel.find();
+    if (allAdmins.length > 2) return;
     const hashedPassword = bcrypt.hashSync(password, 10);
 
     await AdminModel.create({ username, password: hashedPassword });

@@ -15,7 +15,6 @@ import ModalContext from "../context/ModalContext";
 import EditModal from "../components/EditModal";
 import AttendanceModal from "../components/AttendanceModal";
 
-import logo from "./nmlogo.png";
 import exportMessages from "../util/exportMessages";
 
 export default function HomePage() {
@@ -54,7 +53,6 @@ export default function HomePage() {
   return (
     <div className="homepage">
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <img src={logo} className="logo" />
         {!isAdmin ? (
           <Link to={"/login"}>Login</Link>
         ) : (
