@@ -8,10 +8,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: [
-      "http://localhost:5173",
-      "https://fullstack-nm-chat-app.vercel.app/",
-    ], // możliwa zmiana
+    origin: ["http://localhost:5173", "https://chat.nm.com.pl"], // możliwa zmiana
   },
   connectionStateRecovery: {
     maxDisconnectionDuration: 2 * 60 * 1000,
